@@ -5,6 +5,7 @@ import { Footer } from 'src/components/Footer'
 import { Main } from 'src/components/Main'
 import { Header } from 'src/components/Header'
 import { useCallback } from 'react'
+import Link from 'next/link'
 
 // const handleClick = (e, foo) => {
 //   console.log(e.target.href);
@@ -34,13 +35,13 @@ export default function Home() {
 
       <Header />
 
-      <a
+      <Link
         href='/about'
         onClick={handleClick}
       >
 
         ボタン
-      </a>
+      </Link>
 
       <Main page='index' />
 
