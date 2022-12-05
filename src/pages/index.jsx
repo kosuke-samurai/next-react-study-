@@ -4,7 +4,7 @@ import styles from 'src/styles/Home.module.css'
 import { Footer } from 'src/components/Footer'
 import { Main } from 'src/components/Main'
 import { Header } from 'src/components/Header'
-import { useCallback } from 'react'
+import { useCallback, useEffect } from 'react'
 import Link from 'next/link'
 
 // const handleClick = (e, foo) => {
@@ -18,11 +18,22 @@ import Link from 'next/link'
 export default function Home() {
 
   const foo = 1
-
   const handleClick = useCallback((e) => {
     console.log(e.target.href);
     e.preventDefault();
     alert(foo);
+  }, []);
+
+  useEffect(() => {
+
+    //↓マウント時の処理
+    document.body.style.backgroundColor = 'lightblue';
+
+
+    //↓アンマウント時の処理(return以降)
+    return () => {
+      document.body.style.backgroundColor = '';
+    };
   }, []);
 
 
@@ -39,7 +50,6 @@ export default function Home() {
         href='/about'
         onClick={handleClick}
       >
-
         ボタン
       </Link>
 
